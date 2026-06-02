@@ -1,47 +1,48 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Menu, X, ShoppingCart } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { navLinks } from "./navLinks";
+import { useNavigate } from "react-router-dom";
+
 
 const Navbar = () => {
+    const navigate = useNavigate();
     const [open, setOpen] = useState(false);
+    const isLogedIn = localStorage.getItem("token")
 
     return (
-        <header className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur-lg">
-            <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
-
-                {/* Logo */}
+        <header className="sticky top-0 z-50  bg-[#F1F1F0] backdrop-blur-lg border-b-2 border-gray-200">
+            <nav className="mx-auto flex max-w-7xl items-center justify-between py-5">
                 <NavLink
                     to="/"
-                    className="flex items-center gap-2 text-2xl font-bold text-slate-900"
+                    className="flex items-center gap-2 text-2xl font-medium text-slate-900"
                 >
-                    <ShoppingCart size={28} />
-                    ShopVerse
+                    Urbanzy
                 </NavLink>
+                <div className="flex gap-3">
+                    <div className="hidden items-center gap-8 md:flex">
+                        {navLinks.map((link) => (
+                            <NavLink
+                                key={link.path}
+                                to={link.path}
+                                className={({ isActive }) =>
+                                    `font-medium transition-all duration-300 ${isActive
+                                        ? "text-blue-600"
+                                        : "text-slate-600 hover:text-blue-600"
+                                    }`
+                                }
+                            >
+                                {link.name}
+                            </NavLink>
+                        ))}
+                    </div>
 
-                {/* Desktop Menu */}
-                <div className="hidden items-center gap-8 md:flex">
-                    {navLinks.map((link) => (
-                        <NavLink
-                            key={link.path}
-                            to={link.path}
-                            className={({ isActive }) =>
-                                `font-medium transition-all duration-300 ${isActive
-                                    ? "text-blue-600"
-                                    : "text-slate-600 hover:text-blue-600"
-                                }`
-                            }
-                        >
-                            {link.name}
-                        </NavLink>
-                    ))}
-                </div>
-
-                {/* CTA */}
-                <div className="hidden md:block">
-                    <button className="rounded-xl bg-blue-600 px-5 py-2 text-white transition hover:bg-blue-700">
-                        Login
-                    </button>
+                    {!isLogedIn && <div className="hidden md:block">
+                        <button className="cursor-pointer rounded bg-white px-5 py-0.5 text-black border-2 border-amber-300 transition-all duration-900 ease-in-out hover:bg-amber-300"
+                            onClick={() => navigate("/login")}>
+                            Login
+                        </button>
+                    </div>}
                 </div>
 
                 {/* Mobile Toggle */}
@@ -75,9 +76,12 @@ const Navbar = () => {
                         </NavLink>
                     ))}
 
-                    <button className="w-full rounded-lg bg-blue-600 py-2 text-white">
-                        Login
-                    </button>
+                    {!isLogedIn && <div className="">
+                        <button className="cursor-pointer rounded bg-white px-5 py-0.5 text-black border-2 border-amber-300 transition-all duration-900 ease-in-out hover:bg-amber-300"
+                            onClick={() => navigate("/login")}>
+                            Login
+                        </button>
+                    </div>}
                 </div>
             </div>
         </header>

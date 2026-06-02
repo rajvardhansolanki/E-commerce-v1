@@ -2,10 +2,11 @@ import { lazy } from "react";
 import type { AppRoute } from "./types";
 
 const Home = lazy(() => import("../pages/Home/Home"));
-const Products = lazy(() => import("../pages/Products/Products"));
-const Register = lazy(() => import("../pages/Register/Register"));
-const Login = lazy(() => import("../pages/Login/Login"));
+const SHOPE = lazy(() => import("../pages/Shops/Shops"));
+const CATEGORIES = lazy(() => import("../pages/Categories/Categories"));
+const NEWARRIVALS = lazy(() => import("../pages/NewArraivals/Login"));
 const Cart = lazy(() => import("../pages/Cart/Cart"));
+const DEALS = lazy(() => import("../pages/Deals/Deals"));
 const NotFound = lazy(() => import("../pages/NotFound/NotFound"));
 
 export const publicRoutes: AppRoute[] = [
@@ -14,16 +15,20 @@ export const publicRoutes: AppRoute[] = [
         element: Home,
     },
     {
-        path: "/products",
-        element: Products,
+        path: "/shop",
+        element: SHOPE,
     },
     {
-        path: "/register",
-        element: Register,
+        path: "/categories",
+        element: CATEGORIES,
     },
     {
-        path: "/login",
-        element: Login,
+        path: "/new-arraivals",
+        element: NEWARRIVALS,
+    },
+    {
+        path: "/deals",
+        element: DEALS,
     }
 ];
 
@@ -33,6 +38,11 @@ export const protectedRoutes: AppRoute[] = [
         element: Cart,
         isProtected: true,
     },
+    {
+        path: "/wishlist",
+        element: Cart,
+        isProtected: true,
+    }
 ];
 
 export const commonRoutes: AppRoute[] = [

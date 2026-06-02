@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { navLinks } from "./navLinks";
 import { useNavigate } from "react-router-dom";
+import { NAV_LINKS } from "./navLinks";
 
 
 const Navbar = () => {
@@ -17,32 +17,55 @@ const Navbar = () => {
                     to="/"
                     className="flex items-center gap-2 text-2xl font-medium text-slate-900"
                 >
-                    Urbanzy
+                    URBANZY
                 </NavLink>
-                <div className="flex gap-3">
-                    <div className="hidden items-center gap-8 md:flex">
-                        {navLinks.map((link) => (
+                <div className="flex items-center gap-24">
+                    <div className="hidden items-center gap-16 md:flex">
+                        {NAV_LINKS.map((link) => (
                             <NavLink
                                 key={link.path}
                                 to={link.path}
                                 className={({ isActive }) =>
-                                    `font-medium transition-all duration-300 ${isActive
-                                        ? "text-blue-600"
-                                        : "text-slate-600 hover:text-blue-600"
+                                    `text-[1.1rem] tracking-wider transition-all duration-300 ${isActive
+                                        ? "text-black"
+                                        : "text-slate-600 hover:text-black"
                                     }`
                                 }
                             >
-                                {link.name}
+                                {link.label.toUpperCase()}
                             </NavLink>
                         ))}
                     </div>
-
-                    {!isLogedIn && <div className="hidden md:block">
-                        <button className="cursor-pointer rounded bg-white px-5 py-0.5 text-black border-2 border-amber-300 transition-all duration-900 ease-in-out hover:bg-amber-300"
-                            onClick={() => navigate("/login")}>
-                            Login
-                        </button>
-                    </div>}
+                    <div className="flex items-center">
+                        <NavLink
+                            to={"/wishlist"}
+                            className={({ isActive }) =>
+                                `text-[1.1rem] whitespace-nowrap block rounded-lg px-3 py-2 ${isActive
+                                    ? "bg-blue-50 text-blue-600"
+                                    : "text-slate-700"
+                                }`
+                            }
+                        >
+                            WISHLIST (0)
+                        </NavLink>
+                        <NavLink
+                            to={"/wishlist"}
+                            className={({ isActive }) =>
+                                `text-[1.1rem] whitespace-nowrap block rounded-lg px-3 py-2 ${isActive
+                                    ? "bg-blue-50 text-blue-600"
+                                    : "text-slate-700"
+                                }`
+                            }
+                        >
+                            CART (0)
+                        </NavLink>
+                    </div>
+                    {/* {!isLogedIn && <div className="hidden md:block">
+                    <button className="cursor-pointer rounded bg-white px-5 py-0.5 text-black border-2 border-amber-300 transition-all duration-900 ease-in-out hover:bg-amber-300"
+                        onClick={() => navigate("/login")}>
+                        Login
+                    </button>
+                </div>} */}
                 </div>
 
                 {/* Mobile Toggle */}
@@ -60,28 +83,28 @@ const Navbar = () => {
                     }`}
             >
                 <div className="space-y-4 border-t bg-white p-5">
-                    {navLinks.map((link) => (
+                    {NAV_LINKS.map((link) => (
                         <NavLink
                             key={link.path}
                             to={link.path}
                             onClick={() => setOpen(false)}
                             className={({ isActive }) =>
-                                `block rounded-lg px-3 py-2 ${isActive
+                                `whitespace-nowrap block rounded-lg px-3 py-2 ${isActive
                                     ? "bg-blue-50 text-blue-600"
                                     : "text-slate-700"
                                 }`
                             }
                         >
-                            {link.name}
+                            {link.label.toUpperCase()}
                         </NavLink>
                     ))}
 
-                    {!isLogedIn && <div className="">
-                        <button className="cursor-pointer rounded bg-white px-5 py-0.5 text-black border-2 border-amber-300 transition-all duration-900 ease-in-out hover:bg-amber-300"
+                    {/* {!isLogedIn && <div className="">
+                        <button className=" whitespace-nowrap cursor-pointer rounded bg-white px-5 py-0.5 text-black border-2 border-amber-300 transition-all duration-900 ease-in-out hover:bg-amber-300"
                             onClick={() => navigate("/login")}>
                             Login
                         </button>
-                    </div>}
+                    </div>} */}
                 </div>
             </div>
         </header>

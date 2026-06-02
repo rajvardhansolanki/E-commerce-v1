@@ -1,18 +1,22 @@
-export const navLinks = [
+export const NAV_LINKS = [
     {
-        name: "Home",
+        label: "Home",
         path: "/",
     },
     {
-        name: "Products",
+        label: "Shop",
         path: "/products",
     },
     {
-        name: "Register",
-        path: "/register",
+        label: "Categories",
+        path: "/categories",
     },
     {
-        name: "Cart",
-        path: "/cart",
+        label: "New Arrivals",
+        path: "/new-arrivals",
     },
+    {
+        label: "Deals",
+        path: "/deals",
+    }
 ];

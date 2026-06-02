@@ -5,7 +5,7 @@ export const NAV_LINKS = [
     },
     {
         label: "Shop",
-        path: "/products",
+        path: "/shops",
     },
     {
         label: "Categories",
@@ -13,7 +13,7 @@ export const NAV_LINKS = [
     },
     {
         label: "New Arrivals",
-        path: "/new-arrivals",
+        path: "/new-arraivals",
     },
     {
         label: "Deals",

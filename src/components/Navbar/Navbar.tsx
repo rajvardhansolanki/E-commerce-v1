@@ -12,7 +12,7 @@ const Navbar = () => {
 
     return (
         <header className="sticky top-0 z-50  bg-[#F1F1F0] backdrop-blur-lg border-b-2 border-gray-200">
-            <nav className="mx-auto flex max-w-7xl items-center justify-between py-5">
+            <nav className="mx-auto flex max-w-7xl items-center justify-between py-5 px-5 md:px-0">
                 <NavLink
                     to="/"
                     className="flex items-center gap-2 text-2xl font-medium text-slate-900"
@@ -20,7 +20,7 @@ const Navbar = () => {
                     URBANZY
                 </NavLink>
                 <div className="flex items-center gap-24">
-                    <div className="hidden items-center gap-16 md:flex">
+                    <div className="hidden items-center gap-12 md:flex">
                         {NAV_LINKS.map((link) => (
                             <NavLink
                                 key={link.path}
@@ -36,38 +36,7 @@ const Navbar = () => {
                             </NavLink>
                         ))}
                     </div>
-                    <div className="flex items-center">
-                        <NavLink
-                            to={"/wishlist"}
-                            className={({ isActive }) =>
-                                `text-[1.1rem] whitespace-nowrap block rounded-lg px-3 py-2 ${isActive
-                                    ? "bg-blue-50 text-blue-600"
-                                    : "text-slate-700"
-                                }`
-                            }
-                        >
-                            WISHLIST (0)
-                        </NavLink>
-                        <NavLink
-                            to={"/wishlist"}
-                            className={({ isActive }) =>
-                                `text-[1.1rem] whitespace-nowrap block rounded-lg px-3 py-2 ${isActive
-                                    ? "bg-blue-50 text-blue-600"
-                                    : "text-slate-700"
-                                }`
-                            }
-                        >
-                            CART (0)
-                        </NavLink>
-                    </div>
-                    {/* {!isLogedIn && <div className="hidden md:block">
-                    <button className="cursor-pointer rounded bg-white px-5 py-0.5 text-black border-2 border-amber-300 transition-all duration-900 ease-in-out hover:bg-amber-300"
-                        onClick={() => navigate("/login")}>
-                        Login
-                    </button>
-                </div>} */}
                 </div>
-
                 {/* Mobile Toggle */}
                 <button
                     onClick={() => setOpen(!open)}
@@ -90,21 +59,14 @@ const Navbar = () => {
                             onClick={() => setOpen(false)}
                             className={({ isActive }) =>
                                 `whitespace-nowrap block rounded-lg px-3 py-2 ${isActive
-                                    ? "bg-blue-50 text-blue-600"
-                                    : "text-slate-700"
+                                    ? "text-black"
+                                    : "text-slate-600 hover:text-black"
                                 }`
                             }
                         >
                             {link.label.toUpperCase()}
                         </NavLink>
                     ))}
-
-                    {/* {!isLogedIn && <div className="">
-                        <button className=" whitespace-nowrap cursor-pointer rounded bg-white px-5 py-0.5 text-black border-2 border-amber-300 transition-all duration-900 ease-in-out hover:bg-amber-300"
-                            onClick={() => navigate("/login")}>
-                            Login
-                        </button>
-                    </div>} */}
                 </div>
             </div>
         </header>

@@ -15,7 +15,7 @@ export const publicRoutes: AppRoute[] = [
         element: Home,
     },
     {
-        path: "/shop",
+        path: "/shops",
         element: SHOPE,
     },
     {

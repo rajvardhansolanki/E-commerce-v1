@@ -1,0 +1,43 @@
+import type { Review } from "./type";
+
+export const reviews: Review[] = [
+  {
+    id: "rev-001",
+    productId: "prod-001",
+    userId: "user-001",
+    orderId: "ord-001",
+    rating: 5,
+    title: "Best iPhone I have ever used!",
+    body: "The titanium build feels incredibly premium. Camera is amazing especially in low light. A17 Pro handles everything effortlessly. Battery life is better than expected.",
+    images: [],
+    helpfulCount: 47,
+    status: "approved",
+    createdAt: "2024-01-10T12:00:00Z",
+  },
+  {
+    id: "rev-002",
+    productId: "prod-002",
+    userId: "user-002",
+    orderId: "ord-002",
+    rating: 5,
+    title: "S24 Ultra is simply the best Android phone",
+    body: "200MP camera is a game changer. AI features are genuinely useful. S Pen is super smooth. The 5000mAh battery easily lasts through the day.",
+    images: [],
+    helpfulCount: 82,
+    status: "approved",
+    createdAt: "2024-02-14T09:30:00Z",
+  },
+  {
+    id: "rev-003",
+    productId: "prod-007",
+    userId: "user-001",
+    orderId: "ord-003",
+    rating: 5,
+    title: "Simply the best noise cancelling headphones",
+    body: "XM5 is my third Sony headphone and each generation just keeps getting better. The ANC is magical — blocks out everything. Audio quality is outstanding.",
+    images: [],
+    helpfulCount: 134,
+    status: "approved",
+    createdAt: "2024-01-28T15:00:00Z",
+  },
+];
